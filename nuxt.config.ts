@@ -6,18 +6,40 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   build: { transpile: ["vuetify"] },
   modules: [
-    "@nuxt/eslint",
+    [
+      "@nuxt/eslint",
+      {
+        config: {
+          stylistic: true,
+          extends: ["@antfu"],
+        },
+      },
+    ],
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config: ViteConfig) => {
         // @ts-expect-error
         config.plugins.push(vuetify({ autoImport: true }));
       });
     },
+    "@nuxtjs/i18n",
   ],
-  eslint: {
-    config: {
-      stylistic: true,
-    },
+  i18n: {
+    strategy: "prefix_except_default",
+    defaultLocale: "en",
+    locales: [
+      {
+        code: "en",
+        iso: "en-US",
+        name: "English",
+        file: "./libs/i18n/locales/en.ts",
+      },
+      {
+        code: "fa",
+        iso: "fa-IR",
+        name: "فارسی",
+        file: "./libs/i18n/locales/fa.ts",
+      },
+    ],
   },
   vite: {
     vue: {
