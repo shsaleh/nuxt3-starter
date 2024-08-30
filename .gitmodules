@@ -1,0 +1,3 @@
+[submodule "layers/CRM"]
+	path = layers/CRM
+	url = https://gitlab.simorghsoftech.com/web-projects/private-cabin-projects/new-cabin-admin/modules/crm-module.git
