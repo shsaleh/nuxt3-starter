@@ -56,10 +56,6 @@ mkdir -p "./layers/$module_name/pages"
 
 # 12. Initialize Git Flow with default configurations
 cd layers/$module_name || exit
-git flow init -d
-
-# 13. Switch to the 'develop' branch on the submodule
-git checkout develop
 
 # 9. Run 'pnpm init' inside the module directory
 pnpm init 
