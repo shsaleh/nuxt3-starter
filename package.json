@@ -10,10 +10,12 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "postinstall": "nuxt prepare",
-    "prepare": "husky && husky install"
+    "prepare": "husky && husky install &&  bash  ./setup-hooks.sh",
+    "add:module":"bash ./addModule.sh"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "@nuxtjs/i18n": "^8.5.1",
     "nuxt": "^3.13.0",
     "vue": "latest"
   },
