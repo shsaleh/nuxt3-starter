@@ -7,10 +7,18 @@ if [ -z "$COMMIT_MSG_FILE" ]; then
     exit 1
 fi
 
+# Allow merge commits
+if head -1 "$COMMIT_MSG_FILE" | grep -qE "^Merge "; then
+    exit 0
+fi
+
+# Check if the commit message follows the conventional format
 if ! head -1 "$COMMIT_MSG_FILE" | grep -qE "^(feat|fix|chore|docs|test|style|refactor|perf|build|ci|revert)(\(.+?\))?: .{1,}$"; then
     echo "Aborting commit. Your commit message is invalid." >&2
     exit 1
 fi
+
+# Check if the commit message is within the allowed length
 if ! head -1 "$COMMIT_MSG_FILE" | grep -qE "^.{1,88}$"; then
     echo "Aborting commit. Your commit message is too long." >&2
     exit 1
