@@ -11,10 +11,11 @@
     "lint:fix": "eslint . --fix",
     "postinstall": "nuxt prepare",
     "prepare": "husky && husky install &&  bash  ./setup-hooks.sh",
-    "module:add":"bash ./addModule.sh",
-    "module:clone":"bash ./addModule.sh --just-clone"
+    "module:add": "bash ./addModule.sh",
+    "module:clone": "bash ./addModule.sh --just-clone"
   },
   "dependencies": {
+    "@antfu/eslint-config": "^3.2.0",
     "@mdi/font": "^7.4.47",
     "@nuxtjs/i18n": "^8.5.1",
     "nuxt": "^3.13.0",
@@ -27,6 +28,7 @@
     "eslint": "^9.9.1",
     "husky": "^8.0.0",
     "lint-staged": "^15.2.9",
+    "vite-plugin-eslint2": "^4.4.0",
     "vite-plugin-vuetify": "^2.0.4",
     "vuetify": "^3.7.0"
   }
