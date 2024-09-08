@@ -1,6 +1,6 @@
 export const isEmail = (value: string) => {
     if (!value) return 'Email is required'
-    if (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(value)) return true
+    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(value)) return true
     return 'Must be a valid e-mail.'
 }
 export const isPassword = (value: string) => {
