@@ -3,10 +3,10 @@
     <a
       href="#"
       target="_self"
-      class="brand-logo"
-    ><h2 class="brand-text text-primary text-right ma-5"> پی سی ام بروکر </h2></a>
+      class="brand-logo d-none d-sm-flex justify-end"
+    ><h2 class="brand-text text-primary ma-5"> پی سی ام بروکر </h2></a>
     <div
-      class="d-flex justify-center align-center h-screen"
+      class="d-flex justify-center pt-10"
     >
       <v-card
         class="mx-1 pa-12 pb-8"
@@ -15,6 +15,11 @@
         rounded="lg"
       >
         <template #title>
+          <a
+            href="#"
+            target="_self"
+            class="brand-logo d-flex d-sm-none justify-center"
+          ><h4 class="brand-text text-primary ma-5"> پی سی ام بروکر </h4></a>
           <p class="h5 font-weight-bold mb-1 text-center">
             به پنل ادمین  خوش آمدید
           </p>
