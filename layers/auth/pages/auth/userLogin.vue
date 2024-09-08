@@ -102,7 +102,9 @@ const loading = ref(false)
 const visible = ref(false)
 const email = ref('')
 const password = ref('')
+const loginApi = useLogin()
 const login = async () => {
-  console.log('login!')
+  const { data, error } = await loginApi({ email: email.value, password: password.value })
+  console.log(data, error)
 }
 </script>
