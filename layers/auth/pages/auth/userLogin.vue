@@ -109,13 +109,27 @@ const email = ref('')
 const password = ref('')
 const loginApi = useLogin()
 const form = ref()
+const router = useRouter()
+const localePath = useLocalePath()
+
 const login = async () => {
   const { valid } = await form.value.validate()
+
   if (valid) {
     loading.value = true
     const { data, error } = await loginApi({ email: email.value, password: password.value })
-    console.log(data, error)
     loading.value = false
+
+    if (error.value) {
+      console.log(error.value)
+      return
+    }
+
+    if (data.value) {
+      const token = useCookie('token')
+      token.value = data.value.results.token
+      router.push(localePath('/'))
+    }
   }
 }
 </script>
