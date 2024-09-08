@@ -4,12 +4,12 @@
       href="#"
       target="_self"
       class="brand-logo d-none d-sm-flex justify-end"
-    ><h2 class="brand-text text-primary ma-5"> پی سی ام بروکر </h2></a>
+    ><h2 class="brand-text text-primary ma-5">پی سی ام بروکر</h2></a>
     <div
-      class="d-flex justify-center pt-10"
+      class="d-flex justify-center pa-5"
     >
       <v-card
-        class="mx-1 pa-12 pb-8"
+        class="mx-1 pa-8 pa-md-12 pb-8"
         elevation="8"
         width="500"
         rounded="lg"
@@ -19,7 +19,7 @@
             href="#"
             target="_self"
             class="brand-logo d-flex d-sm-none justify-center"
-          ><h4 class="brand-text text-primary ma-5"> پی سی ام بروکر </h4></a>
+          ><h4 class="brand-text text-primary mb-3"> پی سی ام بروکر </h4></a>
           <p class="h5 font-weight-bold mb-1 text-center">
             به پنل ادمین  خوش آمدید
           </p>
