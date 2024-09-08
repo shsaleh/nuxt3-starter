@@ -24,65 +24,68 @@
             به پنل ادمین  خوش آمدید
           </p>
         </template>
-        <div class="text-subtitle-1 text-medium-emphasis">
-          {{ t("email") }}
-        </div>
-
-        <v-text-field
-          v-model="email"
-          density="compact"
-          placeholder="Email address"
-          variant="outlined"
-        />
-        <div
-          class="text-subtitle-1 text-medium-emphasis d-flex align-center"
-        >
-          {{ t("password") }}
-        </div>
-        <v-text-field
-          v-model="password"
-          :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
-          :type="visible ? 'text' : 'password'"
-          density="compact"
-          placeholder="Enter your password"
-          prepend-inner-icon="mdi-lock-outline"
-          variant="outlined"
-          @click:append-inner="visible = !visible"
-        />
-        <a
-          class="text-caption text-decoration-none text-blue"
-          href="#"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Forget password?</a>
-        <div class="">
-          <div class="form-check">
-            <input
-              id="defaultCheck1"
-              class="form-check-input"
-              type="checkbox"
-              value=""
-            >
-            <label
-              class="form-check-label text-grey grey-lighten-5 text-body-2"
-              for="defaultCheck1"
-            >
-              Remember password ?
-            </label>
+        <v-form ref="form">
+          <div class="text-subtitle-1 text-medium-emphasis">
+            {{ t("email") }}
           </div>
-        </div>
-        <v-btn
-          class="mt-5"
-          color="primary"
-          size="large"
-          block
-          rounded="lg"
-          :loading="loading"
-          @click="login"
-        >
-          {{ t("sign_in") }}
-        </v-btn>
+          <v-text-field
+            v-model="email"
+            :rules="[isEmail]"
+            density="compact"
+            placeholder="Email address"
+            variant="outlined"
+          />
+          <div
+            class="text-subtitle-1 text-medium-emphasis d-flex align-center"
+          >
+            {{ t("password") }}
+          </div>
+          <v-text-field
+            v-model="password"
+            :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+            :type="visible ? 'text' : 'password'"
+            density="compact"
+            placeholder="Enter your password"
+            prepend-inner-icon="mdi-lock-outline"
+            variant="outlined"
+            :rules="[isPassword]"
+            @click:append-inner="visible = !visible"
+          />
+          <a
+            class="text-caption text-decoration-none text-blue"
+            href="#"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Forget password?</a>
+          <div class="">
+            <div class="form-check">
+              <input
+                id="defaultCheck1"
+                class="form-check-input"
+                type="checkbox"
+                value=""
+              >
+              <label
+                class="form-check-label text-grey grey-lighten-5 text-body-2"
+                for="defaultCheck1"
+              >
+                Remember password ?
+              </label>
+            </div>
+          </div>
+          <v-btn
+            class="mt-5"
+            color="primary"
+            size="large"
+            block
+            rounded="lg"
+            :loading="loading"
+            @click="login"
+          >
+            {{ t("sign_in") }}
+          </v-btn>
+        </v-form>
         <v-card-text class="text-center">
           <p class="fs-12 text-muted mt-1">
             Dont have an account?
@@ -97,14 +100,22 @@
 </template>
 
 <script setup lang="ts">
+import { isEmail, isPassword } from '@/libs/form/rules'
+
 const { t } = useI18n()
 const loading = ref(false)
 const visible = ref(false)
 const email = ref('')
 const password = ref('')
 const loginApi = useLogin()
+const form = ref()
 const login = async () => {
-  const { data, error } = await loginApi({ email: email.value, password: password.value })
-  console.log(data, error)
+  const { valid } = await form.value.validate()
+  if (valid) {
+    loading.value = true
+    const { data, error } = await loginApi({ email: email.value, password: password.value })
+    console.log(data, error)
+    loading.value = false
+  }
 }
 </script>
