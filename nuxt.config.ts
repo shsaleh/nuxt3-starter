@@ -5,6 +5,11 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
   build: { transpile: ["vuetify"] },
+  runtimeConfig: {
+    public: {
+      BASE_URL: process.env.BASE_URL as string,
+    },
+  },
   modules: [
     [
       "@nuxt/eslint",
