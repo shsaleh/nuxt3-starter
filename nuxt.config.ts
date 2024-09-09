@@ -3,6 +3,7 @@ import type { ViteConfig } from "nuxt/schema";
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
+  ssr:false,
   devtools: { enabled: true },
   build: { transpile: ["vuetify"] },
   runtimeConfig: {
@@ -11,6 +12,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
+    "@pinia/nuxt",
     [
       "@nuxt/eslint",
       {
@@ -28,6 +30,9 @@ export default defineNuxtConfig({
     },
     "@nuxtjs/i18n",
   ],
+  pinia: {
+    storesDirs: ["./stores/**", "./layesrs/*/stores/**"],
+  },
   i18n: {
     strategy: "prefix_except_default",
     defaultLocale: "en",

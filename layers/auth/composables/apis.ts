@@ -9,3 +9,12 @@ export const useLogin = () => {
     });
   };
 };
+
+export const useProfile = () => {
+  const fetch = useFetchApi();
+  return () => {
+    return fetch<{ results: Tuser }>("auth/profile", {
+      method: "get",
+    });
+  };
+};
