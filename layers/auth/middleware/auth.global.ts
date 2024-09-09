@@ -5,7 +5,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   const profile = useProfile();
   const token = useCookie("token");
   const localePath = useLocalePath();
-  console.log(token.value);
 
   if (to.fullPath !== localePath("/auth/userLogin")) {
     if (!token.value) {
