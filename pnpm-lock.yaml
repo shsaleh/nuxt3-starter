@@ -17,6 +17,9 @@ importers:
       '@casl/vue':
         specifier: ^2.2.2
         version: 2.2.2(@casl/ability@6.7.1)(vue@3.5.0(typescript@5.5.4))
+      '@chenfengyuan/vue-countdown':
+        specifier: '2'
+        version: 2.1.2(vue@3.5.0(typescript@5.5.4))
       '@mdi/font':
         specifier: ^7.4.47
         version: 7.4.47
@@ -279,6 +282,11 @@ packages:
     resolution: {integrity: sha512-xWy4i5+3+WuBgENVesPalRTKpSJZ2cEMXtbqjWjqj7FDvoeso7jT1pBVk9ujKlIRhgfVWGdCRb7XzeISi2VLcA==}
     peerDependencies:
       '@casl/ability': ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.1.0 || ^6.0.0
+      vue: ^3.0.0
+
+  '@chenfengyuan/vue-countdown@2.1.2':
+    resolution: {integrity: sha512-/XDKIQzDDBc+4hXb681B1+ySKrStCTZONspRp+TojMcMe1edpCpuk4E/QoNVYxyZ24d+pcwN1YqnfIDgc7haBA==}
+    peerDependencies:
       vue: ^3.0.0
 
   '@clack/core@0.3.4':
@@ -5159,6 +5167,10 @@ snapshots:
   '@casl/vue@2.2.2(@casl/ability@6.7.1)(vue@3.5.0(typescript@5.5.4))':
     dependencies:
       '@casl/ability': 6.7.1
+      vue: 3.5.0(typescript@5.5.4)
+
+  '@chenfengyuan/vue-countdown@2.1.2(vue@3.5.0(typescript@5.5.4))':
+    dependencies:
       vue: 3.5.0(typescript@5.5.4)
 
   '@clack/core@0.3.4':
