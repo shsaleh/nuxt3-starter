@@ -4,10 +4,10 @@
       href="#"
       target="_self"
       class="brand-logo d-none d-sm-flex justify-end"
-    ><h2 class="brand-text text-primary ma-5">پی سی ام بروکر</h2></a>
-    <div
-      class="d-flex justify-center pa-5"
     >
+      <h2 class="brand-text text-primary ma-5">پی سی ام بروکر</h2>
+    </a>
+    <div class="d-flex justify-center pa-5">
       <v-card
         class="mx-1 pa-8 pa-md-12 pb-8"
         elevation="8"
@@ -15,13 +15,32 @@
         rounded="lg"
       >
         <template #title>
+          <!-- <div class="d-flex justify-end">
+            <v-menu>
+              <template #activator="{ props }">
+                <v-btn
+                  v-bind="props"
+                >
+                  فارسی
+                </v-btn>
+              </template>
+<v-list>
+  <v-list-item v-for="(item, index) in items" :key="index" :value="index" :append-avatar="item.img">
+    <v-list-item-title>{{ item.title }}</v-list-item-title>
+  </v-list-item>
+</v-list>
+</v-menu>
+</div> -->
           <a
             href="#"
             target="_self"
             class="brand-logo d-flex d-sm-none justify-center"
-          ><h4 class="brand-text text-primary mb-3"> پی سی ام بروکر </h4></a>
+          >
+            <h4 class="brand-text text-primary mb-3"> پی سی ام بروکر </h4>
+          </a>
+
           <p class="h5 font-weight-bold mb-1 text-center">
-            به پنل ادمین  خوش آمدید
+            {{ t("welcome_to_admin_panel") }}
           </p>
         </template>
         <v-form ref="form">
@@ -35,9 +54,7 @@
             placeholder="Email address"
             variant="outlined"
           />
-          <div
-            class="text-subtitle-1 text-medium-emphasis d-flex align-center"
-          >
+          <div class="text-subtitle-1 text-medium-emphasis d-flex align-center">
             {{ t("password") }}
           </div>
           <v-text-field
@@ -57,7 +74,7 @@
             rel="noopener noreferrer"
             target="_blank"
           >
-            Forget password?</a>
+            {{ t("forget_password") }}</a>
           <div class="">
             <div class="form-check">
               <input
@@ -67,10 +84,10 @@
                 value=""
               >
               <label
-                class="form-check-label text-grey grey-lighten-5 text-body-2"
+                class="form-check-label text-grey grey-lighten-5 text-body-2 mx-1"
                 for="defaultCheck1"
               >
-                Remember password ?
+                {{ t("remember_me") }}
               </label>
             </div>
           </div>
@@ -88,9 +105,9 @@
         </v-form>
         <v-card-text class="text-center">
           <p class="fs-12 text-muted mt-1">
-            Dont have an account?
+            {{ t("dont_have_account") }}
             <NuxtLink class="text-primary">
-              Sign Up
+              {{ t("sign_up") }}
             </NuxtLink>
           </p>
         </v-card-text>
@@ -111,7 +128,10 @@ const loginApi = useLogin()
 const form = ref()
 const router = useRouter()
 const localePath = useLocalePath()
-
+// const items = ref([
+//   { title: 'فارسی', img: 'https://parspng.com/wp-content/uploads/2021/10/iranpng.parspng.com-3.png' },
+//   { title: 'فارسی', img: 'https://parspng.com/wp-content/uploads/2021/10/iranpng.parspng.com-3.png' },
+// ])
 const login = async () => {
   const { valid } = await form.value.validate()
 
