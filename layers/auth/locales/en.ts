@@ -8,5 +8,8 @@ export default {
   forget_password: "Forgot Password?",
   remember_me: "Remember Me",
   dont_have_account: "Dont have an account?",
-  sign_up: "Sign Up"
+  sign_up: "Sign Up",
+  code: "Code",
+  resend: "Resend",
+  twoFactor_text: "The verifaction code has been send to this mobile number"
 };

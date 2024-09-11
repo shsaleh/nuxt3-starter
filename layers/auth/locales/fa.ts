@@ -8,5 +8,8 @@ export default {
   forget_password: "رمز عبور را فراموش کرده‌اید؟",
   remember_me: "مرا به یادآور",
   dont_have_account: "حساب کاربری ندارید؟",
-  sign_up: "ثبت نام کنید"
+  sign_up: "ثبت نام کنید",
+  code: "کد",
+  resend: "ارسال مجدد",
+  twoFactor_text: "کد تایید به این شماره موبایل ارسال شده است"
 };

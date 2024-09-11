@@ -5,4 +5,5 @@ export type Tuser = {
   roles?: Array<{
     permissions: Array<{ id: number; name: string }>;
   }>;
+  is_two_factor: boolean
 };
