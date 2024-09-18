@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
   ],
   pinia: {
-    storesDirs: ["./stores/**", "./layesrs/*/stores/**"],
+    storesDirs: ["./store/**", "./layers/*/store/**"],
   },
   i18n: {
     strategy: "prefix_except_default",
