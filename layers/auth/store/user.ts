@@ -9,6 +9,7 @@ export const useUserStore = defineStore<"userStore", { user: Tuser }>(
         lastName: "",
         email: "",
         roles: [],
+        is_two_factor: false,
       },
     }),
     actions: {
