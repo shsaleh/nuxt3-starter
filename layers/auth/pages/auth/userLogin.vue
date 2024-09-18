@@ -123,6 +123,10 @@
 import { isEmail, isPassword } from '@/libs/form/rules'
 import loginTwoFactor from '@/layers/auth/components/loginTwoFactor.vue'
 
+definePageMeta({
+  layout: 'basic',
+})
+const router = useRouter()
 const { t } = useI18n()
 const loading = ref(false)
 const visible = ref(false)
@@ -146,10 +150,13 @@ const login = async () => {
       return
     }
     if (data.value) {
-      const token = useCookie('token')
-      token.value = data.value.results.token
       if (data.value.results.admin.is_two_factor) {
         loginTwoFactorComponent.value = true
+      }
+      else {
+        const token = useCookie('token')
+        token.value = data.value.results.token
+        router.push('/')
       }
     }
   }
