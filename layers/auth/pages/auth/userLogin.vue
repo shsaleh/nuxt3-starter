@@ -108,7 +108,10 @@
           <v-card-text class="text-center">
             <p class="fs-12 text-muted mt-1">
               {{ t("dont_have_account") }}
-              <NuxtLink class="text-primary">
+              <NuxtLink
+                to="userRegister"
+                class="text-primary"
+              >
                 {{ t("sign_up") }}
               </NuxtLink>
             </p>
