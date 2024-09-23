@@ -168,7 +168,6 @@
                 </label>
                 <v-dialog
                   v-model="dialog"
-                  max-width="500px"
                 >
                   <template #activator="{ props: activatorProps }">
                     <NuxtLink
