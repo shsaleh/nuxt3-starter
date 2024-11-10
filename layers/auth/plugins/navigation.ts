@@ -1,5 +1,5 @@
-import { navigations } from "../navigation";
+import { navigations } from '../navigation'
 
-export default defineNuxtPlugin((nuxtApp) => {
-  useAddNavigation(navigations);
-});
+export default defineNuxtPlugin(() => {
+  useAddNavigation(navigations)
+})
