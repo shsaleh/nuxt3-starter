@@ -28,6 +28,13 @@ cd "./layers"
 # 5. Clone the Git repository
 git clone "$git_repo"
 
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to clone the repository."
+    exit 1
+fi
+
+echo "Repository cloned successfully."
+
 # 6. Navigate to the cloned repository directory
 cd "./$module_name"
 
@@ -57,6 +64,22 @@ for file in $SCRIPTPATH/libs/i18n/locales/*; do
     };" > "./locales/$filename"
 done
 
+mkdir -p "./navigation"
+
+echo "export const navigations: Tnavigation['state']['items'] = [
+  //{
+  //  title: 'title',
+  //  link: '/',
+  //  icon: 'mdi-home',
+  // order: 0,
+  //},
+]
+" > "./navigation/index.ts"
+
+mkdir -p "./plugins"
+cp -ra $SCRIPTPATH/plugins/navigation.ts $SCRIPTPATH/layers/$module_name/plugins/navigation.ts
+
+
 # 10. Create 'nuxt.config.ts' under the module directory
 echo "// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -85,7 +108,7 @@ mkdir -p "./pages"
 # cd layers/$module_name || exit
 
 # 13. Run 'pnpm init' inside the module directory
-pnpm init 
+pnpm init
 
 # 14. Install Husky and initialize it, then copy hooks from the main project
 pnpm add --save-dev husky
