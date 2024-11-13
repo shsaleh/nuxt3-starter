@@ -4,13 +4,13 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host 0.0.0.0",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "postinstall": "nuxt prepare",
-    "prepare": "husky && husky install &&  bash  ./setup-hooks.sh",
+    "prepare": "husky && husky install",
     "module:add": "bash ./addModule.sh",
     "module:clone": "bash ./addModule.sh --just-clone"
   },
