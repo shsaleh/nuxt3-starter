@@ -29,7 +29,7 @@ cd "./layers"
 git clone "$git_repo"
 
 # 6. Navigate to the cloned repository directory
-cd "$module_name"
+cd "./$module_name"
 
 # 7. Check if the 'develop' branch exists
 if git rev-parse --verify develop &>/dev/null; then
@@ -47,14 +47,14 @@ if [ "$just_clone" = true ]; then
 fi
 
 # 8. Create 'locales' directory under the module directory
-mkdir -p "./layers/$module_name/locales"
+mkdir -p "./locales"
 
 # 9. Iterate over files in 'libs/i18n/locales' and create files under 'locales' with predefined content
-for file in ./libs/i18n/locales/*; do
+for file in $SCRIPTPATH/libs/i18n/locales/*; do
     filename=$(basename "$file")
     echo "export default {
     test: 'Test',
-    };" > "./layers/$module_name/locales/$filename"
+    };" > "./locales/$filename"
 done
 
 # 10. Create 'nuxt.config.ts' under the module directory
@@ -63,26 +63,26 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/i18n'],
   i18n: {
-locales: [" > "./layers/$module_name/nuxt.config.ts"
+locales: [" > "./nuxt.config.ts"
 
-for file in ./layers/$module_name/locales/*; do
+for file in ./locales/*; do
     locale_code="${file##*/}"  # Extracts filename (like 'en.ts')
     locale_code="${locale_code%.*}"  # Removes extension (like 'en')
     echo "    {
       code: '$locale_code',
       file: './locales/$locale_code.ts',
-    }," >> "./layers/$module_name/nuxt.config.ts"
+    }," >> "./nuxt.config.ts"
 done
 
 echo "  ],
   },
-});" >> "./layers/$module_name/nuxt.config.ts"
+});" >> "./nuxt.config.ts"
 
 # 11. Create 'pages' directory under the module directory
-mkdir -p "./layers/$module_name/pages"
+mkdir -p "./pages"
 
-# 12. Initialize Git Flow with default configurations
-cd layers/$module_name || exit
+# # 12. Initialize Git Flow with default configurations
+# cd layers/$module_name || exit
 
 # 13. Run 'pnpm init' inside the module directory
 pnpm init 
@@ -90,8 +90,17 @@ pnpm init
 # 14. Install Husky and initialize it, then copy hooks from the main project
 pnpm add --save-dev husky
 
-cp -ra $SCRIPTPATH/.husky/. $SCRIPTPATH/layers/$module_name/.husky/
+sed -i '/"scripts": {/a\
+  "prepare": "husky install",
+' ./package.json
 
-pnpm exec husky init
+pnpm i
+
+cp -ra $SCRIPTPATH/.husky/. $SCRIPTPATH/layers/$module_name/.husky/
+cp -ra $SCRIPTPATH/.gitignore $SCRIPTPATH/layers/$module_name/.gitignore
+
+cd  $SCRIPTPATH
+
+pnpm lint:fix
 
 echo "Module '$module_name' successfully created and set up with Nuxt3."
