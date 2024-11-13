@@ -18,6 +18,10 @@ export default defineNuxtConfig({
       '@nuxt/eslint',
       {
         config: {
+          rules: {
+            // ...Override rules, for example:
+            'vue/multi-word-component-names': 'off',
+          },
           stylistic: true,
           extends: ['@antfu'],
         },
