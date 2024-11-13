@@ -19,14 +19,7 @@ export const useNavigation = defineStore<
   Tnavigation['actions']
 >('useNavigation', {
   state: () => ({
-    items: [
-      {
-        title: 'dashboard',
-        link: '/',
-        icon: 'mdi-home',
-        order: 0,
-      },
-    ],
+    items: [],
   }),
   actions: {
     setItems(items: Tnavigation['state']['items']) {
